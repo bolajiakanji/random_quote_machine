@@ -4,10 +4,12 @@ import './App.css'
 function App() {
   
   const [text, setText] = useState ("");
+  const [color, setcolor] = useState ("");
 
   useEffect(
     () =>{
       fetchData()
+      getRandomColor()
     }, []
   )
   async function updateQuote() {
@@ -89,14 +91,30 @@ function App() {
       
 }
 
+const getRandomColor = () => {
+  const red = Math.floor(Math.random() * 128);
+  const green = Math.floor(Math.random() * 128);
+  const blue = Math.floor(Math.random() * 128);
+
+  setcolor(`rgb(${red}, ${green}, ${blue})`);
+};
+
+const transition = "all 3s";
 
 
   return (
-    <>
-      <div style={{color: "blue"}}>{text.author}</div>
-      <div>{text.content}</div>
+    
+      <div id="quote-box" style={{backgroundColor: color, transition: transition }}>
+        <div id="text">{text.content}</div>
+        <div id="author">{text.author}</div>
+        
+
+        <a href='https:www.//twitter.com/intent/tweet'  id="tweet-quote">tweet-quote</a>
+        <button id="new-quote" onClick={()=> {fetchData(); getRandomColor()}}>new-quote</button>
+      </div>
+      
        
-    </>
+    
   )
 }
 
