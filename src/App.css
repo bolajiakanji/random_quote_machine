@@ -3,6 +3,7 @@
 
 #quote-box {
     margin: 10vh auto;
-    width: 60%;
+    width: 50%;
     color: white;
+    text-align: center;
 }
